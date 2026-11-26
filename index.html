@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Campus Shield – Safe, confidential reporting (demo)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- NAVIGATION -->
+<header class="nav">
+  <a class="brand" href="#home">
+    <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 4 7v8c0 8 5 13 12 15 7-2 12-7 12-15V7z" fill="currentColor"/><path d="m11 16 4 4 7-8" fill="none" stroke="#B9F8D3" stroke-width="3" stroke-linecap="round"/></svg>
+    Campus Shield
+  </a>
+  <button id="menuBtn" class="icon-btn menu" aria-expanded="false" aria-controls="links" aria-label="Open menu">&#9776;</button>
+  <nav id="links" aria-label="Main">
+    <a href="#home">Home</a><a href="#how">How It Works</a><a href="#report">Report an Incident</a>
+    <a href="#track">Track Report</a><a href="#resources">Safety Resources</a>
+    <button id="themeBtn" class="icon-btn" aria-label="Toggle dark mode">&#9680;</button>
+    <a class="btn" href="#report">Report Safely</a>
+  </nav>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section id="home" class="wrap hero">
+  <div>
+    <h1>A Safer Campus Starts With Your Voice.</h1>
+    <p class="lead">Speak up about harassment, stalking, ragging, or online abuse. Report concerns confidentially and help ensure the right people take action.</p>
+    <p class="cta"><a class="btn" href="#report">Report an Incident</a><a class="btn ghost" href="#how">How It Works</a></p>
+    <ul class="trust"><li>Privacy-conscious reporting</li><li>Structured escalation</li><li>Accessible support resources</li></ul>
+  </div>
+  <svg class="shield" viewBox="0 0 200 220" role="img" aria-label="Illustration of a shield with a check mark">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5546FF"/><stop offset="1" stop-color="#101828"/></linearGradient></defs>
+    <path d="M100 10 20 40v60c0 55 36 90 80 110 44-20 80-55 80-110V40z" fill="url(#g)"/>
+    <path d="M100 30 38 52v48c0 44 28 72 62 88 34-16 62-44 62-88V52z" fill="none" stroke="#B9F8D3" stroke-width="3" opacity=".5"/>
+    <path class="tick" d="m68 108 24 24 42-50" fill="none" stroke="#B9F8D3" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</section>
+
+<!-- SAFETY OVERVIEW -->
+<section id="how" class="wrap">
+  <h2>Reporting that protects you</h2>
+  <div class="grid3">
+    <article class="card"><svg viewBox="0 0 24 24" class="ic" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><h3>Confidential Reporting</h3><p>Report anonymously or by name. Suspect details are always optional.</p></article>
+    <article class="card"><svg viewBox="0 0 24 24" class="ic" aria-hidden="true"><path d="M12 20V6M6 12l6-6 6 6"/></svg><h3>Smart Escalation</h3><p>Related reports move from HOD to Dean to a higher authority for review.</p></article>
+    <article class="card"><svg viewBox="0 0 24 24" class="ic" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg><h3>Incident Tracking</h3><p>Follow status with a reference ID, without exposing any sensitive details.</p></article>
+  </div>
+  <ol class="flow" aria-label="Report workflow">
+    <li>Submit a report</li><li>Minimized copy goes to the HOD</li><li>Related reports are checked for patterns</li><li>Status updates appear in tracking</li>
+  </ol>
+</section>
+
+<!-- COMPLAINT FORM -->
+<section id="report" class="wrap">
+  <h2>Report an incident</h2>
+  <p class="muted">About 3 minutes. <strong>Demo only:</strong> nothing is sent, uploaded or stored.</p>
+  <form id="form" class="card form" novalidate>
+    <div class="prog" aria-hidden="true"><div id="bar"></div></div>
+    <p id="stepLabel" class="muted"></p>
+
+    <fieldset class="step" data-step="1"><legend>What kind of incident was it?</legend>
+      <label class="opt"><input type="radio" name="type" value="offline"> Offline ragging</label>
+      <label class="opt"><input type="radio" name="type" value="online"> Online ragging</label>
+    </fieldset>
+
+    <fieldset class="step" data-step="2" hidden><legend>Incident details</legend>
+      <label>Date<input type="date" id="date"></label>
+      <label>Time<input type="time" id="time"></label>
+      <label><span id="placeLbl">Campus location</span><input id="place" autocomplete="off"></label>
+      <label>Category<select id="cat"></select></label>
+      <label>Description<textarea id="desc" rows="4" placeholder="Describe what happened, in your own words."></textarea></label>
+    </fieldset>
+
+    <fieldset class="step" data-step="3" hidden><legend>Suspect details <small>(all optional)</small></legend>
+      <p class="muted">Share only what you know. You can submit without any of these.</p>
+      <label>Name (optional)<input id="sname" autocomplete="off"></label>
+      <label>Department (optional)<input id="sdept" autocomplete="off"></label>
+      <label>Phone number (optional)<input id="sphone" type="tel" autocomplete="off"></label>
+    </fieldset>
+
+    <fieldset class="step" data-step="4" hidden><legend>Evidence (optional)</legend>
+      <p id="evHint" class="muted">Images only: PNG, JPG or WebP, up to 5 files, 5 MB each. Files stay in your browser and are not uploaded or stored.</p>
+      <input type="file" id="files" accept="image/png,image/jpeg,image/webp" multiple aria-label="Choose evidence images">
+      <ul id="fileList" class="files"></ul>
+    </fieldset>
+
+    <fieldset class="step" data-step="5" hidden><legend>Privacy preferences</legend>
+      <label class="opt"><input type="checkbox" id="anon"> Report anonymously</label>
+      <p class="muted">We collect only what you enter above. In a real deployment, authorized reviewers would see a minimized report. Anonymous reports may limit follow-up and status tracking.</p>
+      <label class="opt"><input type="checkbox" id="confirm"> I understand this is a demo and want to submit it.</label>
+    </fieldset>
+
+    <p id="err" class="err" role="alert"></p>
+    <div class="actions">
+      <button type="button" class="btn ghost" id="back" hidden>Back</button>
+      <button type="button" class="btn" id="next">Next</button>
+      <button type="submit" class="btn" id="submit" hidden>Submit report</button>
+    </div>
+  </form>
+  <div id="result" class="card ok" hidden role="status"></div>
+</section>
+
+<!-- ESCALATION -->
+<section id="escalation" class="wrap">
+  <h2>Smart escalation <span class="tag">Simulated</span></h2>
+  <div class="esc">
+    <div class="line"><i id="escFill"></i></div>
+    <ol class="nodes">
+      <li class="node"><b>1</b><h3>First report: HOD</h3><p>Receives a minimized report with no victim-identifying details.</p></li>
+      <li class="node"><b>2</b><h3>Second related report: Dean</h3><p>Reviews further. Victim-identifying details stay withheld.</p></li>
+      <li class="node"><b>3</b><h3>Third related report: Higher Authority</h3><p>Flagged for review. Identity is disclosed only when authorized, necessary and permitted by process.</p></li>
+    </ol>
+  </div>
+  <p id="escMsg" class="muted" aria-live="polite"></p>
+  <p class="cta"><button class="btn" id="escNext">Simulate a related report</button><button class="btn ghost" id="escReset">Reset</button></p>
+  <p class="note">Related reports must be matched carefully to the same incident or alleged pattern. Similar reports are a signal for authorized review, not proof of wrongdoing. Reporters must be protected from retaliation and false identification.</p>
+</section>
+
+<!-- TRACKING -->
+<section id="track" class="wrap">
+  <h2>Track a report <span class="tag">Sample data</span></h2>
+  <form id="trackForm" class="row"><label>Reference ID<input id="refId" placeholder="CS-1001" autocomplete="off"></label><button class="btn">Track</button></form>
+  <p class="muted">Try CS-1001, CS-2002 or CS-3003, or use the ID from your demo submission.</p>
+  <div id="trackOut" class="card" aria-live="polite"><p class="muted">Enter a reference ID to see its status.</p></div>
+</section>
+
+<!-- AUTHORITY PANEL -->
+<section id="authority" class="wrap">
+  <h2>Authority notifications <span class="tag">Demo view</span></h2>
+  <div class="roles" role="group" aria-label="Choose a demo role">
+    <button class="btn ghost role" data-role="student" aria-pressed="true">Student</button>
+    <button class="btn ghost role" data-role="hod" aria-pressed="false">HOD</button>
+    <button class="btn ghost role" data-role="dean" aria-pressed="false">Dean</button>
+    <button class="btn ghost role" data-role="higher" aria-pressed="false">Higher Authority</button>
+  </div>
+  <div id="roleOut" class="card" aria-live="polite"></div>
+  <p class="note">Role switching here is a visual demo. It is not authentication or real access control.</p>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources" class="wrap">
+  <h2>Safety resources</h2>
+  <div class="urgent"><strong>In immediate danger?</strong> Contact local emergency services: <em>[verified emergency number to be added]</em>.</div>
+  <div class="grid2">
+    <div>
+      <details><summary>How to report safely</summary><p>Use a device only you can access. Note dates, places and what was said. Report as soon as you feel ready.</p></details>
+      <details><summary>Preserving screenshots and evidence</summary><p>Capture the full screen with the username, date and link visible. Keep originals; do not edit or crop them.</p></details>
+      <details><summary>Online harassment safety tips</summary><p>Do not reply. Block and report the account on the platform. Tighten privacy settings.</p></details>
+      <details><summary>Campus support contacts</summary><p><em>[Student support office: add verified contact]</em><br><em>[Counselling service: add verified contact]</em></p></details>
+    </div>
+    <div class="card">
+      <h3>Campus map <span class="tag">Illustrative</span></h3>
+      <svg viewBox="0 0 300 180" class="map" aria-label="Illustrative campus map with four sample locations">
+        <rect width="300" height="180" rx="12" class="mapbg"/><path d="M20 100h260M150 20v140" class="road"/>
+        <g class="pin" data-name="Library"><circle cx="70" cy="50" r="12" tabindex="0" role="button" aria-label="Library"/></g>
+        <g class="pin" data-name="Main entrance"><circle cx="150" cy="150" r="12" tabindex="0" role="button" aria-label="Main entrance"/></g>
+        <g class="pin" data-name="Student support office"><circle cx="230" cy="60" r="12" tabindex="0" role="button" aria-label="Student support office"/></g>
+        <g class="pin" data-name="Campus security desk"><circle cx="220" cy="130" r="12" tabindex="0" role="button" aria-label="Campus security desk"/></g>
+      </svg>
+      <p id="mapNote" class="muted" aria-live="polite">Select a pin. Locations are placeholders, not verified safe zones. Your location is never collected.</p>
+    </div>
+  </div>
+  <p class="cta"><button class="btn ghost" id="resetDemo">Reset demo data</button></p>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap grid3">
+    <div><strong>Campus Shield</strong><p>You are not alone. Reporting is a brave step.</p></div>
+    <div><strong>Privacy notice</strong><p>This demo stores nothing and sends nothing. A real system needs a secure backend, authenticated role-based authorization, encryption in transit and at rest, access auditing, retention rules and protected evidence handling.</p></div>
+    <div><strong>Accessibility and support</strong><p>Keyboard friendly, reduced-motion aware. Support contact: <em>[placeholder]</em>.</p><p><a href="#home">Home</a> · <a href="#report">Report</a> · <a href="#track">Track</a></p></div>
+  </div>
+</footer>
+<div class="privacy-bar">Demo only. Nothing you enter is sent or saved.</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
